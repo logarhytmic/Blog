@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+<meta charset="utf-8" />
+<title> Create new Recipe</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+ <script src= "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+</head>
+<body>
+
+<div align="center">
+    <h1>Create New Recipe</h1>
+    <br />
+     <div class="col-sm-4">
+    <form action="#" th:action="@{/save}" th:object="${recipe}" method="post">
+
+      
+ 		<div align="left">
+            <tr>
+                <label class="form-label" >Recipe Name</label>
+                <td>
+	                <input type="hidden" th:field="*{id}" />
+	                <input type="text" th:field="*{name}" class="form-control" placeholder="Recipe Name" />
+                </td>
+            </tr>
+         </div>   
+            
+          	<div align="left">
+          
+            <tr>
+                 <label class="form-label" >Time</label>
+                <td><input type="text" th:field="*{time}" class="form-control" placeholder="Time" /></td>
+            </tr>
+            </div> 
+            <div align="left">
+                 <tr>
+                 <label class="form-label" >Type</label>
+                <td><input type="text" th:field="*{type}" class="form-control" placeholder="Type" /></td>
+            </tr>
+            </div> 
+			<br>
+            <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+            </tr>
+        
+    </form>
+ </div>   
+</div>
+</body>
+</html>
