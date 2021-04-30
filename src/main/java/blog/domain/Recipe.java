@@ -1,6 +1,5 @@
 package blog.domain;
 
-import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,7 @@ public class Recipe {
 	private String name;
 	private int time;
 	private String type;
-	private Instant publishedOn = Instant.now();
+	private long publishedOn = System.currentTimeMillis()/ 1000L;
 	public Recipe() {
 		super();
 		
@@ -56,10 +55,10 @@ public class Recipe {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Instant getPublishedOn() {
+	public long getPublishedOn() {
 		return publishedOn;
 	}
-	public void setPublishedOn(Instant publishedOn) {
+	public void setPublishedOn(long publishedOn) {
 		this.publishedOn = publishedOn;
 	}
 	

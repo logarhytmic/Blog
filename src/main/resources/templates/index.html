@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
- 
+	xmlns:th="http://www.thymeleaf.org">
+
 <head>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
- <script src= "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div>
- <h2 >Recipes Blogg</h2>
- <tr>
- <div align = "left" >    
-      <h3><a  th:href="@{'/new'}">Add new</a></h3>     
-     </div>
- 
- </tr>
- <tr>
- 
- <div class="col-sm-5" align = "center">
-                 <div class="panel-body" align = "center" >
-                 <table class="table">
-  <thead class="thead-dark">
-    <tr>
-       <th>Recipe ID</th>
-            <th>Recipe Name</th>
-            <th>Time in Minutes</th>
-            <th>Recipe Type</th>
-            <th> Date Created </th>
-           
-   </tr>
-  </thead>
-  <tbody>
-      <tr  th:each="recipe : ${listrecipe}">
- <td th:text="${recipe.id}">Recipe ID</td>
- <td th:text="${recipe.name}">Name</td>
- <td th:text="${recipe.time}">Time</td>
- <td th:text="${recipe.type}">Type</td> 
- <td th:text="${recipe.publishedOn}">Created</td> 
- <td>
- <a th:href="@{'/edit/' + ${recipe.id}}">Edit</a>
- </td>     
- <td>
- <a th:href="@{'/delete/' + ${recipe.id}}">Delete</a>
- </td>     
- </tr> 
-   
-  </tbody>
-</table>
-                    
- </div>
- 
- </div> 
- 
- </tr>
- 
- </tbody>
- </table>
- <div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8" style="background: #cdcdcd; display: flex;">
+				<span class="mx-2">
+					<h2>Recipes Blogg</h2>
+				</span> <span class="mx-2">
+					<button type="button" class="btn btn-light" th:href="@{'/new'}">Add
+						new recipe</button>
+				</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-8" style="background: #cdcdcd;">
+				<div class="panel-body" align="center">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Recipe ID</th>
+								<th>Recipe Name</th>
+								<th>Time in Minutes</th>
+								<th>Recipe Type</th>
+								<th>Date Created</th>
+								<th></th>
+								<th></th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="recipe : ${listrecipe}">
+								<td th:text="${recipe.id}">Recipe ID</td>
+								<td th:text="${recipe.name}">Name</td>
+								<td th:text="${recipe.time}">Time</td>
+								<td th:text="${recipe.type}">Type</td>
+								<td th:text="${recipe.publishedOn}">Created</td>
+								<td><a th:href="@{'/edit/' + ${recipe.id}}">Edit</a></td>
+								<td><a th:href="@{'/delete/' + ${recipe.id}}">Delete</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
