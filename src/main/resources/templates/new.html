@@ -11,7 +11,7 @@
 <body>
 
 <div align="center">
-    <h1>Create New Recipe</h1>
+     <h1 th:text="${recipe.id == 0} ? 'Create New Recipe': 'Update Recipe'"></h1>
     <br />
      <div class="col-sm-4">
     <form action="#" th:action="@{/save}" th:object="${recipe}" method="post">

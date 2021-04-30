@@ -18,44 +18,42 @@ import org.springframework.web.servlet.ModelAndView;
 import blog.domain.Recipe;
 import blog.service.RecipeService;
 
-
 @Controller
 public class RecipeController {
 
-	
 	@Autowired
 	private RecipeService service;
-	
+
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
 		List<Recipe> listrecipe = service.listAll();
-		/*List<Recipe> rlist2 = recipeService.getAllRecipes();*/
+		/* List<Recipe> rlist2 = recipeService.getAllRecipes(); */
 		model.addAttribute("listrecipe", listrecipe);
 		System.out.print("Get / ");
 		return "index";
 	}
-	
+
 	@GetMapping("/new")
 	public String add(Model model) {
-	model.addAttribute("recipe", new Recipe());
-	return "new";
+		model.addAttribute("recipe", new Recipe());
+		return "new";
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveRecipe (@RequestBody Recipe std) {
+	public String saveRecipe(@ModelAttribute Recipe std) {
 		System.out.println(std);
 		service.save(std);
 		return "redirect:/";
 	}
-		
+
 	@RequestMapping("edit/{id}")
 	public ModelAndView showEditRecipePage(@PathVariable(name = "id") int id) {
-		ModelAndView mav = new ModelAndView ("new");
+		ModelAndView mav = new ModelAndView("new");
 		Recipe std = service.get(id);
 		mav.addObject("recipe", std);
 		return mav;
-	} 
-	
+	}
+
 	@RequestMapping("/delete/{id}")
 	public String deleterecipe(@PathVariable(name = "id") int id) {
 		service.delete(id);
